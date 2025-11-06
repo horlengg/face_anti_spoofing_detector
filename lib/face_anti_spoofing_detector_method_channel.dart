@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:face_anti_spoofing_detector/models/face_contour.dart';
 
 import 'face_anti_spoofing_detector_platform_interface.dart';
 
@@ -24,7 +23,6 @@ class MethodChannelFaceAntiSpoofingDetector extends FaceAntiSpoofingDetectorPlat
 
   @override
   Future<bool> destroy() {
-    // TODO: implement destroy
     return super.destroy();
   }
 
@@ -34,16 +32,21 @@ class MethodChannelFaceAntiSpoofingDetector extends FaceAntiSpoofingDetectorPlat
     required int previewWidth, 
     required int previewHeight, 
     required int orientation, 
-    required FaceContour faceContour
+    required Rect faceContour
   }) async {
-    final result = await methodChannel.invokeMethod<double?>(
+    final result = await methodChannel.invokeMethod(
         'detect_liveness',
         {
           'yuvBytes': yuvBytes,
           'previewWidth': previewWidth,
           'previewHeight': previewHeight,
           'orientation': orientation,
-          'faceBox': faceContour.toMap(),
+          'faceBox': {
+            'left': faceContour.left.toInt(),
+            'top': faceContour.top.toInt(),
+            'right': faceContour.right.toInt(),
+            'bottom': faceContour.bottom.toInt(),
+          }
         },
       );
       return result;

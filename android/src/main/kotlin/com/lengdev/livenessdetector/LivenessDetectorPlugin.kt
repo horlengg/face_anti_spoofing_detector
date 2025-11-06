@@ -9,6 +9,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import android.util.Log
 
 /** LivenessDetectorPlugin */
 class LivenessDetectorPlugin : FlutterPlugin, MethodCallHandler {
@@ -42,22 +43,15 @@ class LivenessDetectorPlugin : FlutterPlugin, MethodCallHandler {
         CoroutineScope(Dispatchers.Default).launch {
             try {
                 if (livenessDetector != null) {
-                    withContext(Dispatchers.Main) {
-                        result.error(
-                            "INITIALIZATION_ERROR",
-                            "Detector is already initialized. Call destroy() before reinitializing.",
-                            null
-                        )
-                    }
-                    return@launch
+                    livenessDetector?.destroy()
+                    livenessDetector = null
                 }
 
-                val detector = LivenessDetector()
-                val status = detector.loadModel(flutterPluginBinding.applicationContext.assets)
+                livenessDetector = LivenessDetector()
+                val status = livenessDetector?.loadModel(flutterPluginBinding.applicationContext.assets)
 
                 withContext(Dispatchers.Main) {
                     if (status == 0) {
-                        livenessDetector = detector
                         result.success(true)
                     } else {
                         result.error(
@@ -83,8 +77,7 @@ class LivenessDetectorPlugin : FlutterPlugin, MethodCallHandler {
     fun detectLivenessSync(call: MethodCall, result: Result) {
         CoroutineScope(Dispatchers.Default).launch {
             try {
-                val detector = livenessDetector
-                if (detector == null) {
+                if (livenessDetector == null) {
                     withContext(Dispatchers.Main) {
                         result.error(
                             "NO_INITIALIZE_MODULE_ERROR",
@@ -113,7 +106,7 @@ class LivenessDetectorPlugin : FlutterPlugin, MethodCallHandler {
                 )
 
                 // Call native detection
-                val confidenceScore = detector.detect(
+                val confidenceScore = livenessDetector?.detect(
                     yuv,
                     previewWidth,
                     previewHeight,
@@ -126,6 +119,7 @@ class LivenessDetectorPlugin : FlutterPlugin, MethodCallHandler {
                 }
 
             } catch (e: Exception) {
+                Log.d("LivenessDetector","Error : $e")
                 withContext(Dispatchers.Main) {
                     result.error(
                         "DETECT_LIVENESS_ERROR",

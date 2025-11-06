@@ -12,33 +12,45 @@ Full credit to the original authors for their excellent research and implementat
 
 ## Getting Started
 
-import plugin
+### import plugin
 
 ```dart
 import 'package:face_anti_spoofing_detector/face_anti_spoofing_detector.dart';
 ```
 
-Initialize Model
+### Initialize Model
 
 ```dart
-final status = await FaceAntiSpoofingDetectorPlatform.instance.initialize();
+final status = await FaceAntiSpoofingDetector.initialize();
 ```
 
-Start detect
+### Start detect
 
 ```dart
-final confidenceScore = await FaceAntiSpoofingDetectorPlatform.instance.detectLiveness(
+
+final confidenceScore = await FaceAntiSpoofingDetector.detect(
     yuvBytes: yuvBytes,
     previewWidth: cameraViewSize.width.toInt(),
     previewHeight: cameraViewSize.height.toInt(),
     orientation: 7,
     faceContour : faceContour,
 );
+
 ```
 
-Release memory
+### Release memory
 
 ```dart
-FaceAntiSpoofingDetectorPlatform.instance.destroy();
+final status = await FaceAntiSpoofingDetector.destroy();
 ```
 
+<br>
+<br>
+<br>
+<br>
+
+## 📬 Contact
+
+If you have any questions, suggestions, or issues, feel free to reach out via my website:
+
+👉 [Website](https://horleng.vercel.app)

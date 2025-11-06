@@ -1,6 +1,5 @@
-import 'dart:typed_data';
 
-import 'package:face_anti_spoofing_detector/models/face_contour.dart';
+import 'package:flutter/services.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'face_anti_spoofing_detector_method_channel.dart';
@@ -43,7 +42,7 @@ abstract class FaceAntiSpoofingDetectorPlatform extends PlatformInterface {
     required int previewWidth,
     required int previewHeight,
     required int orientation,
-    required FaceContour faceContour
+    required Rect faceContour
   }) async {
     throw UnimplementedError('detectLiveness() has not been implemented.');
   }
