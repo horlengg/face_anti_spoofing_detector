@@ -7,7 +7,7 @@ import 'face_anti_spoofing_detector_platform_interface.dart';
 class MethodChannelFaceAntiSpoofingDetector extends FaceAntiSpoofingDetectorPlatform {
   /// The method channel used to interact with the native platform.
   @visibleForTesting
-  final methodChannel = const MethodChannel('liveness_detector');
+  final methodChannel = const MethodChannel('com.leng.dev/liveness_detector');
 
   @override
   Future<String?> getPlatformVersion() async {
@@ -22,8 +22,9 @@ class MethodChannelFaceAntiSpoofingDetector extends FaceAntiSpoofingDetectorPlat
   }
 
   @override
-  Future<bool> destroy() {
-    return super.destroy();
+  Future<bool> destroy() async {
+    final result = await methodChannel.invokeMethod<bool>('destroy');
+    return result ?? false;
   }
 
   @override

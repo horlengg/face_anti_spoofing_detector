@@ -29,11 +29,11 @@ abstract class FaceAntiSpoofingDetectorPlatform extends PlatformInterface {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 
-  Future<bool> initialize() async {
+  Future<bool> initialize() {
     throw UnimplementedError('initialize() has not been implemented.');
   }
 
-  Future<bool> destroy() async {
+  Future<bool> destroy() {
     throw UnimplementedError('destroy() has not been implemented.');
   }
 

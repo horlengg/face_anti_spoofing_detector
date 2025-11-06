@@ -20,7 +20,7 @@ class LivenessDetectorPlugin : FlutterPlugin, MethodCallHandler {
 
     override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         this.flutterPluginBinding = flutterPluginBinding
-        channel = MethodChannel(flutterPluginBinding.binaryMessenger, "liveness_detector")
+        channel = MethodChannel(flutterPluginBinding.binaryMessenger, "com.leng.dev/liveness_detector")
         channel.setMethodCallHandler(this)
     }
 
