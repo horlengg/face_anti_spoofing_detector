@@ -1,6 +1,6 @@
 name: face_anti_spoofing_detector
 description: "Flutter plugin that provides passive liveness detection for facial recognition systems — ensuring that the detected face belongs to a live person rather than a photo, video."
-version: 0.0.3
+version: 0.0.4
 homepage: https://github.com/horlengg/face_anti_spoofing_detector
 repository: https://github.com/horlengg/face_anti_spoofing_detector
 issue_tracker: https://github.com/horlengg/face_anti_spoofing_detector/issues
