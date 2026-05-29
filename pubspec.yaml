@@ -1,30 +1,38 @@
 name: face_anti_spoofing_detector
 description: "Flutter plugin that provides passive liveness detection for facial recognition systems — ensuring that the detected face belongs to a live person rather than a photo, video."
-version: 0.0.4
+version: 0.0.5
 homepage: https://github.com/horlengg/face_anti_spoofing_detector
 repository: https://github.com/horlengg/face_anti_spoofing_detector
 issue_tracker: https://github.com/horlengg/face_anti_spoofing_detector/issues
 license: MIT
 
 environment:
-  sdk: ">=3.0.0 <4.0.0"
-  flutter: ">=3.0.0"  
+  sdk: ^3.11.1
+  flutter: ">=3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  plugin_platform_interface: ^2.0.2
+  plugin_platform_interface: ^2.1.8
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
 flutter:
+#   assets:
+#     - android/src/main/assets/live/
+#     - android/src/main/assets/live/config.json
+#     - android/src/main/assets/live/model_1.bin
+#     - android/src/main/assets/live/model_1.param
+#     - android/src/main/assets/live/model_2.bin
+#     - android/src/main/assets/live/model_2.param
+
   # This section identifies this Flutter project as a plugin project.
   # The 'pluginClass' specifies the class (in Java, Kotlin, Swift, Objective-C, etc.)
   # which should be registered in the plugin registry. This is required for
