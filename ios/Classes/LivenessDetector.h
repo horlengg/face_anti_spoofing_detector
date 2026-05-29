@@ -1,3 +1,6 @@
+// Author Andikatp
+// https://github.com/andikatp/liveness
+
 #import <Foundation/Foundation.h>
 
 @interface LivenessDetector : NSObject

@@ -1,3 +1,6 @@
+// Author Andikatp
+// https://github.com/andikatp/liveness
+
 #import "LivenessDetector.h"
 #include <algorithm>
 #include <cmath>

@@ -10,3 +10,7 @@ Fix issue function destroy model
 
 ## 0.0.4
 Starting November 1st, 2025, all new apps and updates to existing apps submitted to Google Play and targeting Android 15+ devices must support 16 KB page sizes. For more information about compatibility with 16 KB devices,
+
+
+## 0.0.5
+Add feature support iOS platform by Andikatp(https://github.com/andikatp/liveness)
